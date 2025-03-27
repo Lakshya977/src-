@@ -13,6 +13,10 @@ app.use(express.urlencoded({
     limit: "16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser());     
+//router
+import userRouter from './routes/user.routes.js';
 
+//declare routes
+app.use("api/vi/users",userRouter)
 
 export default app;
