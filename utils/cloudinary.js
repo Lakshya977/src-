@@ -7,7 +7,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_KEY
 });
 
-export const uploadOnCloudinary = async (localFilePath) => {
+const uploadOnCloudinary = async (localFilePath) => {
     try {
         if (!localFilePath) {
             throw new Error("No file path provided!");
@@ -20,7 +20,7 @@ export const uploadOnCloudinary = async (localFilePath) => {
          console.log("file is uplaoded",result.url);
         return result
     } catch (error) {
-      
+        fs.unlink(localFilePath)
         console.error("Cloudinary Upload Error:", error);
         throw error;
     }
